@@ -5,3 +5,4 @@ vim.opt.termguicolors = true
 vim.cmd("silent! syntax enable")
 vim.cmd("silent! hi Normal guibg=NONE ctermbg=NONE")
 vim.cmd("silent! hi EndOfBuffer guibg=NONE ctermbg=NONE")
+vim.cmd("silent! hi LineNr guifg=#cba6f7")

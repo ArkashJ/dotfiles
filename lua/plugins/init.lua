@@ -32,8 +32,7 @@ require('lazy').setup({
       config = function()
          require("plugins.comment")
       end,
-      event = "BufEnter"
-   },
+      event = "BufEnter"   },
 
     -- Illuminate words like the one you are hovering
     {
@@ -175,6 +174,26 @@ require('lazy').setup({
    'sindrets/diffview.nvim',
    'tpope/vim-sleuth', -- Automatically adjust tab size
 
+   -- pyright
+   {
+      'iamcco/diagnostic-languageserver',
+      ft = { "python" },
+      config = function() require('plugins.pyright') end
+   },
+
+   -- Svelte support
+   {
+      'evanleck/vim-svelte',
+      ft = "svelte"
+   },
+   
+   -- Add support for typescript
+   {
+      'jose-elias-alvarez/nvim-lsp-ts-utils',
+      ft = { "typescript", "typescriptreact", "typescript.tsx" },
+      config = function() require('plugins.ts-utils') end
+   },
+   
     -- Autmomatically complete quotes or parens
     {
       'windwp/nvim-autopairs',
