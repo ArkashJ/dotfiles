@@ -174,13 +174,7 @@ require('lazy').setup({
    'sindrets/diffview.nvim',
    'tpope/vim-sleuth', -- Automatically adjust tab size
 
-   -- pyright
-   {
-      'iamcco/diagnostic-languageserver',
-      ft = { "python" },
-      config = function() require('plugins.pyright') end
-   },
-
+   
    -- Svelte support
    {
       'evanleck/vim-svelte',
@@ -226,5 +220,6 @@ require('lazy').setup({
 
        { 'simrat39/rust-tools.nvim' }
     }
- }, 
+ },
+
 })
