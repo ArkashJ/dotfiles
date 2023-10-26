@@ -152,6 +152,16 @@ require('lazy').setup({
       'stevearc/aerial.nvim',
       config = function() require('plugins.aerial') end
    },
+{
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require("plugins.null-ls")
+    end,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    },
+    event = "BufEnter"
+  },
 
    -- Syntax plugin
    {

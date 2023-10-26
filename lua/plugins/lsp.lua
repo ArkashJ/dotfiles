@@ -5,12 +5,17 @@ lsp.ensure_installed({
   'lua_ls',
   'gopls',
   'rust_analyzer'
+  'pyright'
+  'black'
 })
 
 -- Preferences
 lsp.set_preferences({
   suggest_lsp_servers = false
 })
+
+  
+
 
 -- Autocompletion
 local cmp = require('cmp')
@@ -57,13 +62,14 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<LEADER>a', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<LEADER>f', function() vim.lsp.buf.formatting() end, opts)
   vim.keymap.set('n', '<LEADER>w', function()
-    vim.lsp.buf.formatting()
+    vim.lsp.buf.format()
     vim.cmd('w')
   end, opts)
   vim.keymap.set('n', 'gr', function() vim.lsp.buf.references() end, opts)
 end)
 
--- Custom configs
+-- Null-ls for formatting
+  -- Custom configs
 local lsp_rust = lsp.build_options('rust_analyzer', {})
 lsp.configure('lua_ls', {
   settings = {
