@@ -5,8 +5,6 @@ lsp.ensure_installed({
   'lua_ls',
   'gopls',
   'rust_analyzer'
-  'pyright'
-  'black'
 })
 
 -- Preferences
@@ -15,8 +13,6 @@ lsp.set_preferences({
 })
 
   
-
-
 -- Autocompletion
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -61,7 +57,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', '<LEADER>r', function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set('n', '<LEADER>a', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<LEADER>f', function() vim.lsp.buf.formatting() end, opts)
-  vim.keymap.set('n', '<LEADER>w', function()
+  vim.keymap.set('n', '<LEADER>z', function()
     vim.lsp.buf.format()
     vim.cmd('w')
   end, opts)

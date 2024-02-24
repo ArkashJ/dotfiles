@@ -10,45 +10,48 @@ if not vim.loop.fs_stat(lazypath) then
    })
 end
 vim.opt.rtp:prepend(lazypath)
-
+vim.g.instant_username = "ArkashJain"
 require('lazy').setup({
-    "nathom/filetype.nvim", -- Better filetype detection
-    "nvim-lua/plenary.nvim",        -- Necessary dependency
-    'kyazdani42/nvim-web-devicons', -- Cool icons
-    'farmergreg/vim-lastplace',     -- Remember last cursor place
+   -- "nathom/filetype.nvim",      -- Better filetype detection
+   "nvim-lua/plenary.nvim",        -- Necessary dependency
+   'kyazdani42/nvim-web-devicons', -- Cool icons
+   'farmergreg/vim-lastplace',     -- Remember last cursor place
 
-     -- Theme
+   -- Screenshare
+   'jbyuki/instant.nvim',
+   -- Theme
    {
-    "catppuccin/nvim",
-    lazy = false,
-    priority = 1000,
-    name = "catppuccin",
-    config = function() require('plugins.theme') end
-    },
+      "catppuccin/nvim",
+      lazy = false,
+      priority = 1000,
+      name = "catppuccin",
+      config = function() require('plugins.theme') end
+   },
 
-     -- Comment lines with "gc"
+   -- Comment lines with "gc"
    {
       'numToStr/Comment.nvim',
       config = function()
          require("plugins.comment")
       end,
-      event = "BufEnter"   },
+      event = "BufEnter"
+   },
 
-    -- Illuminate words like the one you are hovering
-    {
+   -- Illuminate words like the one you are hovering
+   {
       'RRethy/vim-illuminate',
       config = function() require('plugins.illuminate') end,
       event = "BufEnter"
    },
-   
+
    -- Disable some features for big files
    {
       "LunarVim/bigfile.nvim",
       event = { "FileReadPre", "BufReadPre", "BufEnter" }
    },
 
-    -- Highlight color codes with their code #ff00ff
-    {
+   -- Highlight color codes with their code #ff00ff
+   {
       'norcalli/nvim-colorizer.lua',
       config = function() require('plugins.colorizer') end,
       event = "VimEnter"
@@ -79,7 +82,7 @@ require('lazy').setup({
    },
 
    -- Markdown previewer
-    {
+   {
       'iamcco/markdown-preview.nvim',
       lazy = false,
       build = function() vim.fn["mkdp#util#install"]() end
@@ -102,8 +105,8 @@ require('lazy').setup({
       config = function() require('plugins.silicon') end,
    },
 
-    -- File tree
-    {
+   -- File tree
+   {
       'nvim-neo-tree/neo-tree.nvim',
       branch = "v2.x",
       dependencies = {
@@ -130,7 +133,7 @@ require('lazy').setup({
    },
 
 
-   
+
    {
       'nvim-telescope/telescope.nvim',
       config = function() require('plugins.telescope') end,
@@ -139,29 +142,29 @@ require('lazy').setup({
    },
    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', lazy = true },
 
-   
+
    -- Errors and diagnostics
-    {
+   {
       "folke/trouble.nvim",
       config = function() require('plugins.trouble') end,
       cmd = "Trouble"
    },
 
-    -- Navigate between functions, classes, etc.
-    {
+   -- Navigate between functions, classes, etc.
+   {
       'stevearc/aerial.nvim',
       config = function() require('plugins.aerial') end
    },
-{
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require("plugins.null-ls")
-    end,
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
-    event = "BufEnter"
-  },
+   {
+      'jose-elias-alvarez/null-ls.nvim',
+      config = function()
+         require("plugins.null-ls")
+      end,
+      dependencies = {
+         "neovim/nvim-lspconfig",
+      },
+      event = "BufEnter"
+   },
 
    -- Syntax plugin
    {
@@ -171,7 +174,7 @@ require('lazy').setup({
    },
    "nvim-treesitter/nvim-treesitter-context",
    'christoomey/vim-tmux-navigator',
-   
+
    -- Git blame and gutters
    {
       "lewis6991/gitsigns.nvim",
@@ -184,52 +187,52 @@ require('lazy').setup({
    'sindrets/diffview.nvim',
    'tpope/vim-sleuth', -- Automatically adjust tab size
 
-   
+
    -- Svelte support
    {
       'evanleck/vim-svelte',
       ft = "svelte"
    },
-   
+
    -- Add support for typescript
    {
       'jose-elias-alvarez/nvim-lsp-ts-utils',
       ft = { "typescript", "typescriptreact", "typescript.tsx" },
       config = function() require('plugins.ts-utils') end
    },
-   
-    -- Autmomatically complete quotes or parens
-    {
+
+   -- Autmomatically complete quotes or parens
+   {
       'windwp/nvim-autopairs',
       event = "InsertEnter",
       config = true
    },
-   
-    -- LSP + Autocomplete
+
+
+   -- LSP + Autocomplete
    {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    config = function() require('plugins.lsp') end,
-    dependencies = {
-       -- LSP Support
-       { 'neovim/nvim-lspconfig' },             -- Required
-       { 'williamboman/mason.nvim' },           -- Optional
-       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v1.x',
+      config = function() require('plugins.lsp') end,
+      dependencies = {
+         -- LSP Support
+         { 'neovim/nvim-lspconfig' },             -- Required
+         { 'williamboman/mason.nvim' },           -- Optional
+         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+         -- Autocompletion
+         { 'hrsh7th/nvim-cmp' },                  -- Required
+         { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+         { 'hrsh7th/cmp-buffer' },                -- Optional
+         { 'hrsh7th/cmp-path' },                  -- Optional
+         { 'saadparwaiz1/cmp_luasnip' },          -- Optional
+         { 'hrsh7th/cmp-nvim-lua' },              -- Optional
 
-       -- Autocompletion
-       { 'hrsh7th/nvim-cmp' },         -- Required
-       { 'hrsh7th/cmp-nvim-lsp' },     -- Required
-       { 'hrsh7th/cmp-buffer' },       -- Optional
-       { 'hrsh7th/cmp-path' },         -- Optional
-       { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-       { 'hrsh7th/cmp-nvim-lua' },     -- Optional
+         -- Snippets
+         { 'L3MON4D3/LuaSnip' },             -- Required
+         { 'rafamadriz/friendly-snippets' }, -- Optional
 
-       -- Snippets
-       { 'L3MON4D3/LuaSnip' },             -- Required
-       { 'rafamadriz/friendly-snippets' }, -- Optional
-
-       { 'simrat39/rust-tools.nvim' }
-    }
- },
+         { 'simrat39/rust-tools.nvim' }
+      }
+   },
 
 })

@@ -22,7 +22,7 @@ map('<LEADER>fh', '<Cmd>Telescope oldfiles only_cwd=true initial_mode=normal<CR>
 map('<LEADER>fe', '<Cmd>Telescope diagnostics initial_mode=normal<CR>', '[F]ind [E]rrors')
 map('<LEADER>km', '<Cmd>Telescope keymaps<CR>', '[K]ey[M]aps')
 map('<LEADER>fc', '<Cmd>Telescope current_buffer_fuzzy_find<CR>', '[F]ind words in [C]urrent buffer')
-map('<LEADER>fn', '<Cmd>:enew<CR>', '[F]ile [N]ew')
+map('<LEADER>fn', '<Cmd>:new<CR>', '[F]ile [N]ew')
 
 -- Neo tree
 map('<LEADER>n', '<Cmd>Neotree toggle filesystem left focus reveal<CR>', '[N]eotree')
