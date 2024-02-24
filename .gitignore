@@ -8,4 +8,4 @@ coc-settings.json
 lazy-lock.json
 after
 undo
-.DS_Store
+*.DS_Store
